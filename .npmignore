@@ -1,0 +1,8 @@
+src/*
+tests/*
+__tests__/*
+coverage/*
+tsconfig.json
+jest.config.js
+node_modules
+./lib
