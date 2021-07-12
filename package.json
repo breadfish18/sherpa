@@ -6,7 +6,6 @@
   "types": "out/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest",
     "clean": "rm -rf out/",
     "coverage": "jest --coverage",
     "prepublish": "npm run clean && npm run build"
