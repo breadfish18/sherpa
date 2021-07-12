@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@automatedtf/catalog": "^0.0.8",
+    "@automatedtf/catalog": "^0.0.13",
     "axios": "^0.19.2"
   },
   "devDependencies": {
