@@ -22,10 +22,22 @@ You can install this module with npm within your project by running the command:
 npm install @automatedtf/sherpa
 ```
 ### ItemInstance
-One of the key types within this module is the `ItemInstance` class. This is a data object of which the class constructor extracts the minimum required fields from `EconItem` to represent an instance of an item.
+One of the key types within this module is the `ItemInstance` interface. It details the least sufficient information required to uniquely identify an item instance within TF2.
 
 ```typescript
-class ItemInstance {
+interface ItemInstance {
+    appid: number; // Game id (440 for TF2, 730 for CS:GO)
+    assetid: string; // Steam-given id for possession of item
+    instanceid: string; // Internal Steam field for item information caching
+    classid: string; // Internal Steam field for item information caching
+    icon_url: string; // Image url hash to attach onto CDN link for display purposes
+    sku: string; // Item SKU generated from `@automatedtf/catalog`
+}
+```
+A class object `CItemInstance` can be used as a container to extract the properties of an `ItemInstance` object from `EconItem`.
+
+```typescript
+class CItemInstance implements ItemInstance {
     appid: number; // Game id (440 for TF2, 730 for CS:GO)
     assetid: string; // Steam-given id for possession of item
     instanceid: string; // Internal Steam field for item information caching
@@ -34,6 +46,14 @@ class ItemInstance {
     sku: string; // Item SKU generated from `@automatedtf/catalog`
     ...
 }
+```
+
+You would then be able to create an instance of `CItemInstance` by passing in an `EconItem` object and then turn it into a `ItemInstance` object by calling `toItemInstance()` on it.
+
+```typescript
+const econItem: EconItem = ...; // get some EconItem object from somewhere
+
+const itemInstance: ItemInstance = new CItemInstance(econItem).toItemInstance();
 ```
 
 ### Getting a Backpack

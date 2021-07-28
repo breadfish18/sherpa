@@ -1,6 +1,6 @@
 import { toBaseName } from "@automatedtf/catalog";
 import { getBackpackFromAPI } from "./adapter";
-import { ItemInstance } from "./ItemInstance";
+import { ItemInstance, CItemInstance } from './ItemInstance';
 
 export class Backpack {
     total_inventory_count: number;
@@ -19,7 +19,7 @@ export class Backpack {
         this.items = {};
 
         assets.map(asset => {
-            this.items[asset.assetid] = new ItemInstance({ ...asset, ...(itemDesc[asset.classid]) });
+            this.items[asset.assetid] = new CItemInstance({ ...asset, ...(itemDesc[asset.classid]) }).toItemInstance();
         });
     }
 
