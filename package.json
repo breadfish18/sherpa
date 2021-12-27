@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@automatedtf/catalog": "^0.0.20",
-    "axios": "^0.19.2"
+    "axios": "^0.24.0"
   },
   "devDependencies": {
     "typescript": "^3.9.7"
