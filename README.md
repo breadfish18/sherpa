@@ -93,7 +93,6 @@ Gets all instances with that `itemName`.
 
 ##### getInstancesByBaseSKU
 ```typescript
-// Warning: Case sensitive!
 const baseSKUOfItemsToFind: string = "5918;6";
 const items: ItemInstance[] = backpack.getInstancesByBaseSKU(baseSKUOfItemsToFind);
 ```
