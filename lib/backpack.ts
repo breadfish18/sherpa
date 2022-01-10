@@ -32,12 +32,7 @@ export class Backpack {
     }
 
     getInstances(itemName: string): ItemInstance[] {
-        let instances: ItemInstance[] = [];
-        for (let assetid in this.items) {
-            let item = this.items[assetid];
-            if (toBaseName(item.sku) == itemName) instances.push(item);
-        }
-        return instances;
+        return Object.values(this.items).filter(item => toBaseName(item.sku) == itemName);
     }
 
     getInstancesByBaseSKU(sku: string): ItemInstance[] {
