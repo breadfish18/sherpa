@@ -32,6 +32,7 @@ interface ItemInstance {
     classid: string; // Internal Steam field for item information caching
     icon_url: string; // Image url hash to attach onto CDN link for display purposes
     sku: string; // Item SKU generated from `@automatedtf/catalog`
+    base_sku: string; // Base SKU for item without any additional item modifications
 }
 ```
 A class object `CItemInstance` can be used as a container to extract the properties of an `ItemInstance` object from `EconItem`.
@@ -44,6 +45,7 @@ class CItemInstance implements ItemInstance {
     classid: string; // Internal Steam field for item information caching
     icon_url: string; // Image url hash to attach onto CDN link for display purposes
     sku: string; // Item SKU generated from `@automatedtf/catalog`
+    base_sku: string; // Base SKU for item without any additional item modifications
     ...
 }
 ```
