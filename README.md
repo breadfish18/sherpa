@@ -8,6 +8,7 @@
         - [getUsedSlots](#getusedslots)
         - [getItemByAssetId](#getitembyassetid)
         - [getInstances](#getinstances)
+        - [getInstancesByBaseSKU](#getinstancesbybasesku)
         - [ownsItem](#ownsitem)
 - [📚 Helpful Resources](#-helpful-resources)
 
@@ -89,6 +90,14 @@ const nameOfItemsToFind: string = "Scream Fortress XII War Paint Case";
 const items: ItemInstance[] = backpack.getInstances(nameOfItemsToFind);
 ```
 Gets all instances with that `itemName`.
+
+##### getInstancesByBaseSKU
+```typescript
+// Warning: Case sensitive!
+const baseSKUOfItemsToFind: string = "5918;6";
+const items: ItemInstance[] = backpack.getInstancesByBaseSKU(baseSKUOfItemsToFind);
+```
+Gets all instances with that `baseSKUOfItemsToFind`.
 
 ##### ownsItem
 
