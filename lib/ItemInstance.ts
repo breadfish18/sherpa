@@ -1,4 +1,4 @@
-import { toFullSKU, EconItem } from '@automatedtf/catalog';
+import { toFullSKU, EconItem, toBaseSKU } from '@automatedtf/catalog';
 
 export interface ItemInstance {
     appid: number;
@@ -7,6 +7,7 @@ export interface ItemInstance {
     classid: string;
     icon_url: string;
     sku: string;
+    base_sku: string;
 }
 export class CItemInstance implements ItemInstance {
     
@@ -17,6 +18,7 @@ export class CItemInstance implements ItemInstance {
 
     icon_url: string;
     sku: string;
+    base_sku: string;
     
     constructor(econItem: EconItem) {
         this.appid = econItem.appid;
@@ -26,6 +28,7 @@ export class CItemInstance implements ItemInstance {
 
         this.icon_url = econItem.icon_url;
         this.sku = toFullSKU(econItem);
+        this.base_sku = toBaseSKU(econItem);
     }
 
     toItemInstance(): ItemInstance {
@@ -35,7 +38,8 @@ export class CItemInstance implements ItemInstance {
             instanceid: this.instanceid,
             classid: this.classid,
             icon_url: this.icon_url,
-            sku: this.sku
+            sku: this.sku,
+            base_sku: this.base_sku
         };
     }
 }
