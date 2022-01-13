@@ -7,7 +7,7 @@ export interface ItemInstance {
     classid: string;
     icon_url: string;
     sku: string;
-    base_sku: string;
+    full_sku: string;
 }
 export class CItemInstance implements ItemInstance {
     
@@ -18,7 +18,7 @@ export class CItemInstance implements ItemInstance {
 
     icon_url: string;
     sku: string;
-    base_sku: string;
+    full_sku: string;
     
     constructor(econItem: EconItem) {
         this.appid = econItem.appid;
@@ -27,8 +27,8 @@ export class CItemInstance implements ItemInstance {
         this.classid = econItem.classid;
 
         this.icon_url = econItem.icon_url;
-        this.sku = toFullSKU(econItem);
-        this.base_sku = toBaseSKU(econItem);
+        this.sku = toBaseSKU(econItem);
+        this.full_sku = toFullSKU(econItem);
     }
 
     toItemInstance(): ItemInstance {
@@ -39,7 +39,7 @@ export class CItemInstance implements ItemInstance {
             classid: this.classid,
             icon_url: this.icon_url,
             sku: this.sku,
-            base_sku: this.base_sku
+            full_sku: this.full_sku
         };
     }
 }

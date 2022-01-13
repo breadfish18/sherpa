@@ -32,8 +32,8 @@ interface ItemInstance {
     instanceid: string; // Internal Steam field for item information caching
     classid: string; // Internal Steam field for item information caching
     icon_url: string; // Image url hash to attach onto CDN link for display purposes
-    sku: string; // Item SKU generated from `@automatedtf/catalog`
-    base_sku: string; // Base SKU for item without any additional item modifications
+    sku: string; // Item base SKU generated from `@automatedtf/catalog`
+    full_sku: string; // sku for item, with any additional item modifications included
 }
 ```
 A class object `CItemInstance` can be used as a container to extract the properties of an `ItemInstance` object from `EconItem`.
@@ -45,8 +45,8 @@ class CItemInstance implements ItemInstance {
     instanceid: string; // Internal Steam field for item information caching
     classid: string; // Internal Steam field for item information caching
     icon_url: string; // Image url hash to attach onto CDN link for display purposes
-    sku: string; // Item SKU generated from `@automatedtf/catalog`
-    base_sku: string; // Base SKU for item without any additional item modifications
+    sku: string; // Item base SKU generated from `@automatedtf/catalog` 
+    full_sku: string; // sku for item, with any additional item modifications included
     ...
 }
 ```
@@ -91,10 +91,10 @@ const items: ItemInstance[] = backpack.getInstances(nameOfItemsToFind);
 ```
 Gets all instances with that `itemName`.
 
-##### getInstancesByBaseSKU
+##### getInstancesBySKU
 ```typescript
 const baseSKUOfItemsToFind: string = "5918;6";
-const items: ItemInstance[] = backpack.getInstancesByBaseSKU(baseSKUOfItemsToFind);
+const items: ItemInstance[] = backpack.getInstancesBySKU(baseSKUOfItemsToFind);
 ```
 Gets all instances with that `baseSKUOfItemsToFind`.
 

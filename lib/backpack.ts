@@ -35,8 +35,8 @@ export class Backpack {
         return Object.values(this.items).filter(item => toBaseName(item.sku) == itemName);
     }
 
-    getInstancesByBaseSKU(sku: string): ItemInstance[] {
-        return Object.values(this.items).filter(item => item.base_sku == sku);
+    getInstancesBySKU(sku: string): ItemInstance[] {
+        return Object.values(this.items).filter(item => item.sku == sku);
     }
 
     ownsItem(assetid: string): boolean {
