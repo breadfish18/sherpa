@@ -10,6 +10,7 @@
         - [getInstances](#getinstances)
         - [getInstancesByBaseSKU](#getinstancesbybasesku)
         - [ownsItem](#ownsitem)
+    - [Dealing with Backpack Errors](#dealing-with-backpack-errors)
 - [📚 Helpful Resources](#-helpful-resources)
 
 ## 👋 Introduction
@@ -106,6 +107,12 @@ const ownsSpecialItem: boolean = backpack.ownsItem(specialAssetid);
 ```
 
 Checks if the user owns an item with that `assetid`.
+
+### Dealing with Backpack Errors
+
+Calling `getTF2Backpack` can result in the following errors. These errors are exported by the module to allow you to catch for them.
+- `PrivateBackpackError`: The user's backpack is private and cannot be accessed.
+- `InvalidSteamIdError`: The provided steamid is invalid.
 
 
 ## 📚 Helpful Resources
