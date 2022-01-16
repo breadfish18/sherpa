@@ -51,7 +51,7 @@ export const InvalidSteamIdError = CustomError("InvalidSteamIdError", { message:
 export async function getTF2Backpack(steamid): Promise<Backpack> {
     try {
         let contents = await getBackpackFromAPI(steamid, 440);
-        return Promise.resolve(new Backpack(contents));
+        return new Backpack(contents);
     } catch (error) {
         if (error.response.status == 403) {
             throw new PrivateBackpackError();
