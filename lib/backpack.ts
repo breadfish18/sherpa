@@ -1,6 +1,7 @@
 import { toBaseName } from "@automatedtf/catalog";
 import { getBackpackFromAPI } from "./adapter";
 import { ItemInstance, CItemInstance } from './ItemInstance';
+import * as CustomError from "custom-error-instance";
 
 export class Backpack {
     total_inventory_count: number;
@@ -44,7 +45,20 @@ export class Backpack {
     }
 }
 
+export const PrivateBackpackError = CustomError("PrivateBackpackError", { message: "This backpack is private." });
+export const InvalidSteamIdError = CustomError("InvalidSteamIdError", { message: "Invalid steamid given." });
+
 export async function getTF2Backpack(steamid): Promise<Backpack> {
-    let contents = await getBackpackFromAPI(steamid, 440);
-    return Promise.resolve(new Backpack(contents));
+    try {
+        let contents = await getBackpackFromAPI(steamid, 440);
+        return Promise.resolve(new Backpack(contents));
+    } catch (error) {
+        if (error.response.status == 403) {
+            throw new PrivateBackpackError();
+        } else if (error.response.status == 404) {
+            throw new InvalidSteamIdError();
+        } else {
+            throw error;
+        }
+    }
 }
