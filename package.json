@@ -8,7 +8,7 @@
     "build": "tsc",
     "clean": "rm -rf out/",
     "coverage": "jest --coverage",
-    "prepublish": "npm run clean && npm run build"
+    "prepublish": "npm run build"
   },
   "author": "",
   "license": "ISC",
