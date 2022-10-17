@@ -48,9 +48,11 @@ export class Backpack {
 export const PrivateBackpackError = CustomError("PrivateBackpackError", { message: "This backpack is private." });
 export const InvalidSteamIdError = CustomError("InvalidSteamIdError", { message: "Invalid steamid given." });
 
-export async function getTF2Backpack(steamid): Promise<Backpack> {
+export async function getTF2Backpack(steamid, axiosInstance?): Promise<Backpack> {
     try {
-        let contents = await getBackpackFromAPI(steamid, 440);
+        let contents = axiosInstance
+            ? await getBackpackFromAPI(steamid, 440, axiosInstance)
+            : await getBackpackFromAPI(steamid, 440);
         return new Backpack(contents);
     } catch (error) {
         if (error.response.status == 403) {
